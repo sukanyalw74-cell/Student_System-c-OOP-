@@ -68,13 +68,28 @@ class Teacher:public BaseEntity
 private:
     string teachingMaterial;
     double salary;
+    int studentIds[5];
 public:
     //setter
     void setSalary(double salary)
     {
         this->salary=salary;
     }
+    void setstudentIed(int studentIds[5])
+    {
+        for(int i=0;i<5;++i)
+            this->studentIds[i]=studentIds[i];
+    }
+    void setteachingMatrial(string teachingMarial)
+    {
+        this->teachingMaterial=teachingMarial;
+    }
     //Getter
+    string gitteachingMatrial()
+    {
+        return teachingMaterial;
+    }
+    int get
     double getSalary()
     {
         return salary;
