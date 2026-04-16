@@ -1,25 +1,41 @@
 #include <iostream>
 using namespace std;
-//create model baseentity
-class BaseEntity
+//create model shatedate;
+class ShateDate
 {
 private:
-    string name;
-    int id;
+     string name;
+     int id;
+public:
+     //setter
+     void setName(string name)
+     {
+         this->name=name;
+     }
+     void setId(int i)
+     {
+         this->id=id;
+     }
+     //Getter
+    string getName()
+    {
+        return name;
+    }
+    int getId()
+    {
+        return id;
+    }
+};
+//create model baseentity
+class BaseEntity:public ShateDate
+{
+private:
     int age;
     string phoneNumber;
     string faculty;
     string universityName;
 public:
     //setter
-    void setName(string name)
-    {
-        this->name=name;
-    }
-    void setId(int i)
-    {
-        this->id=id;
-    }
     void setAge(int age)
     {
         this->age=age;
@@ -37,14 +53,6 @@ public:
         this->universityName=universityName;
     }
     //Getter
-    string getName()
-    {
-        return name;
-    }
-    int getId()
-    {
-        return id;
-    }
     int getAge()
     {
         return age;
@@ -77,7 +85,7 @@ public:
     }
     void setstudentIed(int studentIds[5])
     {
-        for(int i=0;i<5;++i)
+        for(int i=0;i<sizeof(studentIds)/sizeof(studentIds[0]);++i)
             this->studentIds[i]=studentIds[i];
     }
     void setteachingMatrial(string teachingMarial)
@@ -89,7 +97,10 @@ public:
     {
         return teachingMaterial;
     }
-    int get
+    int* getstudentIed()
+    {
+        return studentIds;
+    }
     double getSalary()
     {
         return salary;
@@ -105,7 +116,7 @@ private:
 public:
     void setnumeberOfTeacher(Teacher numeberOfTeacher[5])
     {
-        for(int i=0;i<5;++i)
+        for(int i=0;i<sizeof(numeberOfTeacher)/sizeof(numeberOfTeacher[0]);++i)
             this->numeberOfTeacher[i]=numeberOfTeacher[i];
     }
     void setGpa(double gpa)
@@ -119,5 +130,22 @@ public:
     Teacher* getnumeberOfTeacher()
     {
         return numeberOfTeacher;
+    }
+};
+//create model Coures
+class Course:public ShateDate
+{
+private:
+    double hour;
+public:
+    //setter
+    void sethour(double hour)
+    {
+        this->hour=hour;
+    }
+    //getter
+    double gethour()
+    {
+        return hour;
     }
 };
