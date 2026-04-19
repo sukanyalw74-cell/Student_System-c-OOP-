@@ -112,13 +112,23 @@ class Course:public ShareDate
 {
 private:
     double hour;
+    int studentIds[5];
 public:
     //setter
+    void setstudentIds(int studentIds[5])
+    {
+        for(int i=0;i<sizeof(studentIds)/sizeof(studentIds[0]);++i)
+            this->studentIds[i]=studentIds[i];
+    }
     void sethour(double hour)
     {
         this->hour=hour;
     }
     //getter
+    int* getstudentIds()
+    {
+        return studentIds;
+    }
     double gethour()
     {
         return hour;
