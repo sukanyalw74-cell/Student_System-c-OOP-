@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
-//create model shatedate;
-class ShateDate
+//create model sharedate;
+class ShareDate
 {
 private:
      string name;
@@ -27,7 +27,7 @@ public:
     }
 };
 //create model baseentity
-class BaseEntity:public ShateDate
+class BaseEntity:public ShareDate
 {
 private:
     int age;
@@ -107,33 +107,8 @@ public:
     }
 
 };
-//create model student
-class Student:public BaseEntity
-{
-private:
-    double gpa;
-    Teacher numeberOfTeacher[5];
-public:
-    void setnumeberOfTeacher(Teacher numeberOfTeacher[5])
-    {
-        for(int i=0;i<sizeof(numeberOfTeacher)/sizeof(numeberOfTeacher[0]);++i)
-            this->numeberOfTeacher[i]=numeberOfTeacher[i];
-    }
-    void setGpa(double gpa)
-    {
-        this->gpa=gpa;
-    }
-    double getGpa()
-    {
-        return gpa;
-    }
-    Teacher* getnumeberOfTeacher()
-    {
-        return numeberOfTeacher;
-    }
-};
 //create model Coures
-class Course:public ShateDate
+class Course:public ShareDate
 {
 private:
     double hour;
@@ -147,5 +122,43 @@ public:
     double gethour()
     {
         return hour;
+    }
+};
+
+//create model student
+class Student:public BaseEntity
+{
+private:
+    double gpa;
+    Teacher numeberOfTeacher[5];
+    Course courses[5];
+public:
+    //seter
+    void setcourses(Course courses[5])
+    {
+        for(int i=0;i<sizeof(courses)/sizeof(courses[0]);++i)
+            this->courses[i]=courses[i];
+    }
+    void setnumeberOfTeacher(Teacher numeberOfTeacher[5])
+    {
+        for(int i=0;i<sizeof(numeberOfTeacher)/sizeof(numeberOfTeacher[0]);++i)
+            this->numeberOfTeacher[i]=numeberOfTeacher[i];
+    }
+    void setGpa(double gpa)
+    {
+        this->gpa=gpa;
+    }
+    //geter
+    double getGpa()
+    {
+        return gpa;
+    }
+    Teacher* getnumeberOfTeacher()
+    {
+        return numeberOfTeacher;
+    }
+    Course* getcourse()
+    {
+        return courses;
     }
 };
