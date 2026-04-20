@@ -64,6 +64,7 @@ public:
 //interface TeacherRepository
 class TeacherRepository
 {
+public:
     virtual int addTeacher(Teacher teacher);
 };
 
