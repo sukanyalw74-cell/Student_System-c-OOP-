@@ -43,12 +43,12 @@ public:
 class CourseRepositoryImpl: public CourseRepository
 {
 private:
-    Course courses[5];
+    Course courses[25];
     int index=0;
 public:
     int addCourse(Course course)
     {
-        if(index==5)
+        if(index==25)
         {
             cout<< "Full Course" <<endl;
         }
@@ -64,11 +64,27 @@ public:
 //interface TeacherRepository
 class TeacherRepository
 {
-
+    virtual int addTeacher(Teacher teacher);
 };
 
 //class TeacherRepository
 class TeacherRepositoryImpl: public TeacherRepository
 {
+private:
+    Teacher teachers[25];
+    int index=0;
+public:
+    int addTeacher(Teacher teacher)
+    {
+        if(index==25)
+        {
+            cout<< "Full Teacher" <<endl;
+        }
+        else
+        {
+            teachers[index]=teacher;
+            index++;
+        }
 
+    }
 };

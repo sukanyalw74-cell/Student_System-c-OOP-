@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 //create model sharedate;
 class ShareDate
@@ -134,7 +134,6 @@ public:
         return hour;
     }
 };
-
 //create model student
 class Student:public BaseEntity
 {
