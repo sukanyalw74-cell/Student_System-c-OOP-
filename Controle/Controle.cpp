@@ -2,7 +2,8 @@
 #include "../service/Service.cpp"
 
 using namespace std;
-
+/////////////////////// Student \\\\\\\\\\\\\\\\\\\\\\\
+//class StudentController
 class StudentController
 {
 private:
@@ -13,6 +14,8 @@ public:
        return studentService.addStudent(student);
     }
 };
+/////////////////////// Teacher \\\\\\\\\\\\\\\\\\\\\\\
+//class TeacherService
 class TeacherController
 {
 private:
@@ -23,7 +26,8 @@ public:
        return teacherService.addTeacher(teacher);
     }
 };
-/////////
+/////////////////////// Course \\\\\\\\\\\\\\\\\\\\\\\
+//class CourseService
 class CourseController
 {
 private:
