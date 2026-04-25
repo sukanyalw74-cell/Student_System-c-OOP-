@@ -2,49 +2,57 @@
 #include "../repo/Repo.cpp"
 
 using namespace std;
+/////////////////////// Student \\\\\\\\\\\\\\\\\\\\\\\
+//interface StudentService
 class StudentService
 {
 public:
-    virtual int addStudent(Student student);
+    virtual int addStudent(Student student)=0;
 };
+//class StudentServiceImpl
 class StudentServiceImpl
 {
 private:
-    StudentRepository studentRepository;
+    StudentRepositoryImpl studentRepository;
 public:
     int addStudent(Student student)
     {
        return studentRepository.addStudent(student);
     }
 };
-//----------TEACHER-----------//
-class TeacherService
-{
-public:
-    virtual int addTeacher(Teacher teacher);
-};
-class TeacherServiceImpl
-{
-private:
-    TeacherRepository teacherRepository;
-public:
-    int addTeacher(Teacher teacher)
-    {
-        return teacherRepository.addTeacher(teacher);
-    }
-};
+/////////////////////// Course \\\\\\\\\\\\\\\\\\\\\\\
+//interface CourseService
 class CourseService
 {
 public:
-    virtual int addCourse(Course course);
+    virtual int addCourse(Course course)=0;
 };
+//class CourseServiceImpl
 class CourseServiceImpl
 {
 private:
-    CourseRepository courseRepository;
+    CourseRepositoryImpl courseRepository;
 public:
      int addCourse(Course course)
     {
        return courseRepository.addCourse(course);
+    }
+};
+/////////////////////// Teacher \\\\\\\\\\\\\\\\\\\\\\\
+//interface TeacherService
+class TeacherService
+{
+public:
+    virtual int addTeacher(Teacher teacher)=0;
+};
+//class TeacherServiceImpl
+class TeacherServiceImpl
+{
+private:
+    TeacherRepositoryImpl teacherRepository;
+public:
+    int addTeacher(Teacher teacher)
+    {
+        return teacherRepository.addTeacher(teacher);
     }
 };

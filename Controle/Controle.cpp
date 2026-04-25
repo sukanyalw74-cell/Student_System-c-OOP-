@@ -7,7 +7,7 @@ using namespace std;
 class StudentController
 {
 private:
-    StudentService studentService;
+    StudentServiceImpl studentService;
 public:
     int addStudent(Student student)
     {
@@ -19,7 +19,7 @@ public:
 class TeacherController
 {
 private:
-    TeacherService teacherService;
+    TeacherServiceImpl teacherService;
 public:
     int addTeacher(Teacher teacher)
     {
@@ -31,7 +31,7 @@ public:
 class CourseController
 {
 private:
-    CourseService courseService;
+    CourseServiceImpl courseService;
 public:
     int addCourse(Course course)
     {

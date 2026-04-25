@@ -14,7 +14,7 @@ public:
      }
      void setId(int i)
      {
-         this->id=id;
+         id=i;
      }
      //Getter
     string getName()
