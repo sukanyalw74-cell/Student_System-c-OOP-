@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include "../repo/Repo.cpp"
-
+#include "../validation/Validation.cpp"
 using namespace std;
 /////////////////////// Student \\\\\\\\\\\\\\\\\\\\\\\
 //interface StudentService
@@ -8,16 +8,54 @@ class StudentService
 {
 public:
     virtual int addStudent(Student student)=0;
+    virtual Student getStudentById(int id)=0;
+    virtual int editStudent(Student student)=0;
 };
 //class StudentServiceImpl
 class StudentServiceImpl
 {
 private:
     StudentRepositoryImpl studentRepository;
+    StudentValidation studentValidation;
+    ValidationService validationService;
+    Student studentResult;
 public:
     int addStudent(Student student)
     {
-       return studentRepository.addStudent(student);
+        if(studentValidation.validteStudent(student)==1)
+        {
+            int id=studentRepository.addStudent(student);
+            if(id== -1)
+            {
+                validationService.fulldata("Student");
+            }
+            else
+            {
+                return id;
+            }
+        }
+        return -1;
+    }
+    Student getStudentById(int id)
+    {
+       studentResult = studentRepository.getStudentById(id);
+       if(studentResult.getId()==-1)
+       {
+           validationService.notExist("Student",id);
+       }
+       return studentResult;
+    }
+    int editStudent(Student student)
+    {
+        int index = studentRepository.editStudent(student);
+        if(index==-1)
+        {
+            validationService.notExist("Student",student.getId());
+        }
+        else
+        {
+            cout<<"Sucess Edit Student With ID ["<<student.getId()<<"]"<<endl;
+        }
     }
 };
 /////////////////////// Course \\\\\\\\\\\\\\\\\\\\\\\
@@ -26,16 +64,54 @@ class CourseService
 {
 public:
     virtual int addCourse(Course course)=0;
+    virtual Course getCourseById(int id)=0;
+    virtual int editCourse(Course course)=0;
 };
 //class CourseServiceImpl
 class CourseServiceImpl
 {
 private:
     CourseRepositoryImpl courseRepository;
+    CourseValidation courseValidation;
+    ValidationService validationService;
+    Course courseResult;
 public:
      int addCourse(Course course)
     {
-       return courseRepository.addCourse(course);
+        if(courseValidation.validteCourse(course)==1)
+        {
+            int id=courseRepository.addCourse(course);;
+            if(id==-1)
+            {
+                validationService.fulldata("Course");
+            }
+            else
+            {
+                return id;
+            }
+        }
+        return -1;
+    }
+    Course getCourseById(int id)
+    {
+        courseResult=courseRepository.getCourseById(id);
+        if(courseResult.getId()==-1)
+        {
+            validationService.notExist("Course",id);
+        }
+        return courseResult;
+    }
+    int editCourse(Course course)
+    {
+        int index=CourseRepository.editCourse(course);
+        if(index==-1)
+        {
+            validationService.notExist("Course",course.getId());
+        }
+        else
+        {
+            cout<<"Sucess Edit Course With ID ["<<course.getId()<<"]"<<endl;
+        }
     }
 };
 /////////////////////// Teacher \\\\\\\\\\\\\\\\\\\\\\\
@@ -44,15 +120,53 @@ class TeacherService
 {
 public:
     virtual int addTeacher(Teacher teacher)=0;
+    virtual Teacher getTeacherById(int id)=0;
+    virtual int editTeacher(Teacher teacher)=0;
 };
 //class TeacherServiceImpl
 class TeacherServiceImpl
 {
 private:
     TeacherRepositoryImpl teacherRepository;
+    TeacherValidation teacherValidation;
+    ValidationService validationService;
+    Teacher teacherResult;
 public:
     int addTeacher(Teacher teacher)
     {
-        return teacherRepository.addTeacher(teacher);
+        if(teacherValidation.validteTeacher(teacher)==1)
+        {
+            int id= teacherRepository.addTeacher(teacher);
+            if(id==-1)
+            {
+                validationService.fulldata("Teacher");
+            }
+            else
+            {
+                return id;
+            }
+        }
+        return -1;
+    }
+    Teacher getTeacherById(int id)
+    {
+        teacherResult=teacherRepository.getTeacherById(id);
+        if(teacherResult.getId()==-1)
+        {
+            validationService.notExist("Teacher",id);
+        }
+        return teacherResult;
+    }
+    int editTeacher(Teacher teacher)
+    {
+        int index=TeacherService.editTeacher(teacher);
+        if(index==-1)
+        {
+            validationService.notExist("Teacher",teacher.getId());
+        }
+        else
+        {
+            cout<<"Sucess Edit Course With ID ["<<teacher.getId()<<"]"<<endl;
+        }
     }
 };
