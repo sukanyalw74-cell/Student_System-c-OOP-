@@ -28,7 +28,11 @@ public:
     }
     void updateStudent(Student student)
     {
-        StudentService.editStudent(student);
+        studentService.editStudent(student);
+    }
+    void showStudents()
+    {
+        studentService.showStudent();
     }
 };
 /////////////////////// Teacher \\\\\\\\\\\\\\\\\\\\\\\
@@ -85,6 +89,6 @@ public:
     }
      void updateCourse(Course course)
      {
-         courseService.addCourse(course);
+         courseService.editCourse(course);
      }
 };

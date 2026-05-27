@@ -33,6 +33,7 @@ public:
     virtual int addStudent(Student student)=0;
     virtual Student getStudentById(int id)=0;
     virtual int editStudent(Student student)=0;
+    virtual void showStudent()=0;
 };
 
 //class StudentRepository
@@ -41,7 +42,7 @@ class StudentRepositoryImpl: public StudentRepository
 private:
     Data data;
     Student invalidStudent;
-    int index = -1;
+
 public:
     int addStudent(Student student)
     {
@@ -71,6 +72,7 @@ public:
     }
     int editStudent(Student student)
     {
+        int index = -1;
         for(int i=0;i<data.indexStudents;++i)
         {
             if(data.students[i].getId()==student.getId())
@@ -87,6 +89,17 @@ public:
         {
             data.students[index] = student;
             return index;
+        }
+    }
+    void showStudent()
+    {
+        for(int i=0;i<data.indexStudents;++i)
+        {
+            cout<<"\t\tId \t\t name \t\t Age \t\t phone Number \t\t GPA"<<endl;
+            cout<<"\t\t"<<data.students[i].getId()
+            <<"\t\t"<<data.students[i].getName()
+            <<"\t\t"<<data.students[i].getAge()
+            <<"\t\t"<<data.students[i].getPhoneNumber()<<"\t\t"<<data.students[i].getGpa()<<endl;
         }
     }
 };
@@ -106,7 +119,6 @@ class CourseRepositoryImpl: public CourseRepository
 private:
     Data data;
     Course invalidCourses;
-    int index = -1;
 public:
     int addCourse(Course course)
     {
@@ -136,8 +148,10 @@ public:
     }
     int editCourse(Course course)
     {
+        int index = -1;
         for(int i=0;i<data.indexCourses;++i)
         {
+             int index = -1;
             if(data.courses[i].getId()==course.getId())
             {
                 index=i;
@@ -171,7 +185,7 @@ class TeacherRepositoryImpl: public TeacherRepository
 private:
     Data data;
     Teacher invalidTeachers;
-    int index = -1;
+
 public:
     int addTeacher(Teacher teacher)
     {
@@ -201,6 +215,7 @@ public:
     }
     int editTeacher(Teacher teacher)
     {
+        int index = -1;
         for(int i=0;i<data.indexTeachers;++i)
         {
             if(data.teachers[i].getId()==teacher.getId())

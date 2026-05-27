@@ -86,7 +86,7 @@ public:
     }
     void setstudentIed(int studentIds[5])
     {
-        for(int i=0;i<sizeof(studentIds)/sizeof(studentIds[0]);++i)
+        for(int i=0;i<5;++i)
             this->studentIds[i]=studentIds[i];
     }
     void setteachingMatrial(string teachingMarial)
@@ -118,7 +118,7 @@ public:
     //setter
     void setstudentIds(int studentIds[5])
     {
-        for(int i=0;i<sizeof(studentIds)/sizeof(studentIds[0]);++i)
+        for(int i=0;i<5;++i)
             this->studentIds[i]=studentIds[i];
     }
     void sethour(double hour)
@@ -146,7 +146,7 @@ public:
     //seter
     void setcourses(Course courses[5])
     {
-        for(int i=0;i<sizeof(courses)/sizeof(courses[0]);++i)
+        for(int i=0;i<5;++i)
             this->courses[i]=courses[i];
     }
     void setnumeberOfTeacher(Teacher numeberOfTeacher[5])

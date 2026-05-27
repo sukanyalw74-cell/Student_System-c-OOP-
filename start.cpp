@@ -2,6 +2,11 @@
 #include "Controle/Controle.cpp"
 
 using namespace std;
+
+StudentController studentController;
+TeacherController teacherController;
+CourseController courseController;
+
 int id;
 int process;
 void showlist(string str)
@@ -27,7 +32,7 @@ void addStudent()
     student.setPhoneNumber(phoneNumber);
     cout<<"Enter Student GPA :"; cin>>gpa;
     student.setGpa(gpa);
-    StudentController studentController;
+   // StudentController studentController;
     id=studentController.addStudent(student);
     if(id!=-1)
     {
@@ -45,7 +50,7 @@ void addCourse()
     double hour;
     cout<<"Enter Course Hour: ";cin>>hour;
     course.sethour(hour);
-    CourseController courseController;
+    //CourseController courseController;
     id=courseController.addCourse(course);
     if(id!=-1)
     {
@@ -68,7 +73,7 @@ void addTeacher()
     double salary;
     cout<<"Enter Teacher Salary : ";cin>>salary;
     teacher.setSalary(salary);
-    TeacherController teacherController;
+    //TeacherController teacherController;
     id=teacherController.addTeacher(teacher);
     if(id!=-1)
     {
@@ -79,23 +84,88 @@ void showStudentById()
 {
     cout<<"Enter Student Id :";
     cin>>id;
-    StudentController studentController;
+    //StudentController studentController;
     studentController.showStudentById(id);
 }
 void showCourseById()
 {
     cout<<"Enter Course Id :";
     cin>>id;
-    CourseController courseController;
+    //CourseController courseController;
     courseController.showCourseById(id);
 }
 void showTeacherById()
 {
     cout<<"Enter Teacher Id :";
     cin>>id;
-    TeacherController teacherController;
+   // TeacherController teacherController;
     teacherController.showTeacherById(id);
 }
+void editStudent()
+{
+    string name;
+    int age;
+    double gpa;
+    string phoneNumber;
+    Student student;
+    cout<<"Please Enter Student Data: "<<endl;
+    cout<<"Enter Student ID :";cin>>id;
+    student.setId(id);
+    cout<<"Enter Student Name :";cin>>name;
+    student.setName(name);
+    cout<<"Enter Student Age :";cin>>age;
+    student.setAge(age);
+    cout<<"Enter Student Phone Number :"; cin>>phoneNumber;
+    student.setPhoneNumber(phoneNumber);
+    cout<<"Enter Student GPA :"; cin>>gpa;
+    student.setGpa(gpa);
+    //StudentController studentController;
+    studentController.updateStudent(student);
+}
+void editCourse()
+{
+    Course course;
+    cout<<"Please Enter Course Data: "<<endl;
+    string name;
+    cout<<"Enter Course ID: ";cin>>id;
+    course.setId(id);
+    cout<<"Enter Course Name: ";cin>>name;
+    course.setName(name);
+    double hour;
+    cout<<"Enter Course Hour: ";cin>>hour;
+    course.sethour(hour);
+    //CourseController courseController;
+    courseController.updateCourse(course);
+}
+void editTeacher()
+{
+    Teacher teacher;
+    cout<<"Please Enter Teacher Data: "<<endl;
+    cout<<"Enter Teacher ID: ";cin>>id;
+    teacher.setId(id);
+    string name;
+    cout<<"Enter Teacher Name: ";cin>>name;
+    teacher.setName(name);
+    int age;
+    cout<<"Enter Teacher Age: ";cin>>age;
+    teacher.setAge(age);
+    string phoneNumber;
+    cout<<"Enter Teacher Phone Number: ";cin>>phoneNumber;
+    teacher.setPhoneNumber(phoneNumber);
+    double salary;
+    cout<<"Enter Teacher Salary : ";cin>>salary;
+    teacher.setSalary(salary);
+    //TeacherController teacherController;
+    teacherController.updateTeacher(teacher);
+}
+void displayStudent()
+{
+    studentController.showStudents();
+}
+/*void displayCourse()
+{
+    courseController.
+}*/
 void switchStudent()
 {
     switch(process)
@@ -107,10 +177,10 @@ void switchStudent()
             cout<<"Remove Student"<<endl;
             break;
         case 3:
-            cout<<"Edit Student"<<endl;
+           editStudent();
             break;
         case 4:
-            cout<<"Show Student"<<endl;
+            displayStudent();
             break;
         case 5:
             showStudentById();
@@ -132,7 +202,7 @@ void switchCourse()
             cout<<"Remove Course"<<endl;
             break;
         case 3:
-            cout<<"Edit Course"<<endl;
+            editCourse();
             break;
         case 4:
             cout<<"Show Course"<<endl;
@@ -157,7 +227,7 @@ void switchTeacher()
             cout<<"Remove Teacher"<<endl;
             break;
         case 3:
-            cout<<"Edit Teacher"<<endl;
+            editTeacher();
             break;
         case 4:
             cout<<"Show Teacher"<<endl;
