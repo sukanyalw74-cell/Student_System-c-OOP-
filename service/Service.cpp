@@ -11,6 +11,7 @@ public:
     virtual Student getStudentById(int id)=0;
     virtual int editStudent(Student student)=0;
     virtual void showStudent()=0;
+    virtual int removeStudent(int id)=0;
 };
 //class StudentServiceImpl
 class StudentServiceImpl
@@ -63,6 +64,19 @@ public:
     {
         studentRepository.showStudent();
     }
+    int removeStudent(int id)
+    {
+        int index=studentRepository.removeStudent(id);
+        if(index==-1)
+        {
+            validationService.notExist("Student",id);
+        }
+        else
+        {
+            cout<<"The Student with id ["<<id<<"] removed: "<<endl;
+        }
+        return index;
+    }
 };
 /////////////////////// Course \\\\\\\\\\\\\\\\\\\\\\\
 //interface CourseService
@@ -72,6 +86,7 @@ public:
     virtual int addCourse(Course course)=0;
     virtual Course getCourseById(int id)=0;
     virtual int editCourse(Course course)=0;
+    virtual int removeCourse(int id)=0;
 };
 //class CourseServiceImpl
 class CourseServiceImpl
@@ -120,6 +135,22 @@ public:
         }
         return index;
     }
+    void showCourse()
+    {
+        courseRepository.showCourse();
+    }
+    int removeCourse(int id)
+    {
+        int index=courseRepository.removeCourse(id);
+        if(index==-1)
+        {
+            validationService.notExist("Course",id);
+        }
+        else
+        {
+            cout<<"The Course with id ["<<id<<"] removed: "<<endl;
+        }
+    }
 };
 /////////////////////// Teacher \\\\\\\\\\\\\\\\\\\\\\\
 //interface TeacherService
@@ -129,6 +160,7 @@ public:
     virtual int addTeacher(Teacher teacher)=0;
     virtual Teacher getTeacherById(int id)=0;
     virtual int editTeacher(Teacher teacher)=0;
+    virtual int removeTeacher(int id)=0;
 };
 //class TeacherServiceImpl
 class TeacherServiceImpl
@@ -173,8 +205,24 @@ public:
         }
         else
         {
-            cout<<"Sucess Edit Course With ID ["<<teacher.getId()<<"]"<<endl;
+            cout<<"Sucess Edit Teacher With ID ["<<teacher.getId()<<"]"<<endl;
         }
         return index;
+    }
+     void showTeacher()
+    {
+        teacherRepository.showTeacher();
+    }
+     int removeTeacher(int id)
+    {
+        int index=teacherRepository.removeTeacher(id);
+        if(index==-1)
+        {
+            validationService.notExist("Teacher",id);
+        }
+        else
+        {
+            cout<<"The Teacher with id ["<<id<<"] removed: "<<endl;
+        }
     }
 };

@@ -34,6 +34,10 @@ public:
     {
         studentService.showStudent();
     }
+    void removeStudent(int id)
+    {
+        studentService.removeStudent(id);
+    }
 };
 /////////////////////// Teacher \\\\\\\\\\\\\\\\\\\\\\\
 //class TeacherService
@@ -63,6 +67,14 @@ public:
     {
         teacherService.editTeacher(teacher);
     }
+    void showTeachers()
+    {
+        teacherService.showTeacher();
+    }
+    void removeTeacher(int id)
+    {
+        teacherService.removeTeacher(id);
+    }
 };
 /////////////////////// Course \\\\\\\\\\\\\\\\\\\\\\\
 //class CourseService
@@ -91,4 +103,12 @@ public:
      {
          courseService.editCourse(course);
      }
+      void showCourses()
+    {
+        courseService.showCourse();
+    }
+    void removeCourse(int id)
+    {
+        courseService.removeCourse(id);
+    }
 };

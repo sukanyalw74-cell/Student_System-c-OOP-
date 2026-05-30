@@ -34,6 +34,7 @@ public:
     virtual Student getStudentById(int id)=0;
     virtual int editStudent(Student student)=0;
     virtual void showStudent()=0;
+    virtual int removeStudent(int id)=0;
 };
 
 //class StudentRepository
@@ -102,6 +103,31 @@ public:
             <<"\t\t"<<data.students[i].getPhoneNumber()<<"\t\t"<<data.students[i].getGpa()<<endl;
         }
     }
+    int removeStudent(int id)
+    {
+        int index=-1;
+        for(int i=0;i<data.indexStudents;++i)
+        {
+            if(id==data.students[i].getId())
+            {
+                index=i;
+                break;
+            }
+        }
+        if(index!=-1)
+        {
+            for(int i=index;i<data.indexStudents-1;i++)
+            {
+                data.students[i]=data.students[i+1];
+            }
+            data.indexStudents--;
+            return index;
+        }
+        else
+        {
+            return index;
+        }
+    }
 };
 /////////////////////// Course \\\\\\\\\\\\\\\\\\\\\\\
 //interface CourseRepository
@@ -111,6 +137,8 @@ public:
     virtual int addCourse(Course course)=0;
     virtual Course getCourseById(int id)=0;
     virtual int editCourse(Course course)=0;
+    virtual void showCourse()=0;
+    virtual int removeCourse(int id)=0;
 };
 
 //class CourseRepository
@@ -168,6 +196,41 @@ public:
             return index;
         }
     }
+    void showCourse()
+    {
+        for(int i=0;i<data.indexCourses;++i)
+        {
+            cout<<"\t\tId \t\t name \t\t Age \t\t phone Number \t\t Hour"<<endl;
+            cout<<"\t\t"<<data.courses[i].getId()
+            <<"\t\t"<<data.courses[i].getName()
+            <<"\t\t"<<data.courses[i].gethour()<<endl;
+        }
+    }
+    int removeCourse(int id)
+    {
+        int index=-1;
+        for(int i=0;i<data.indexCourses;++i)
+        {
+            if(id==data.courses[i].getId())
+            {
+                index=i;
+                break;
+            }
+        }
+        if(index!=-1)
+        {
+            for(int i=index;i<data.indexCourses-1;i++)
+            {
+                data.courses[i]=data.courses[i+1];
+            }
+            data.indexCourses--;
+            return index;
+        }
+        else
+        {
+            return index;
+        }
+    }
 };
 /////////////////////// Teacher \\\\\\\\\\\\\\\\\\\\\\\
 //interface TeacherRepository
@@ -177,6 +240,8 @@ public:
     virtual int addTeacher(Teacher teacher)=0;
     virtual Teacher getTeacherById(int id)=0;
     virtual int editTeacher(Teacher teacher)=0;
+    virtual void showTeacher()=0;
+    virtual int removeTeacher(int id)=0;
 };
 
 //class TeacherRepository
@@ -231,6 +296,42 @@ public:
         else
         {
             data.teachers[index] = teacher;
+            return index;
+        }
+    }
+    void showTeacher()
+    {
+        for(int i=0;i<data.indexTeachers;++i)
+        {
+            cout<<"\t\tId \t\t name \t\t Age \t\t phone Number \t\t Salary"<<endl;
+            cout<<"\t\t"<<data.teachers[i].getId()
+            <<"\t\t"<<data.teachers[i].getName()
+            <<"\t\t"<<data.teachers[i].getAge()
+            <<"\t\t"<<data.teachers[i].getPhoneNumber()<<"\t\t"<<data.teachers[i].getSalary()<<endl;
+        }
+    }
+    int removeTeacher(int id)
+    {
+        int index=-1;
+        for(int i=0;i<data.indexTeachers;++i)
+        {
+            if(id==data.teachers[i].getId())
+            {
+                index=i;
+                break;
+            }
+        }
+        if(index!=-1)
+        {
+            for(int i=index;i<data.indexTeachers-1;i++)
+            {
+                data.teachers[i]=data.teachers[i+1];
+            }
+            data.indexTeachers--;
+            return index;
+        }
+        else
+        {
             return index;
         }
     }

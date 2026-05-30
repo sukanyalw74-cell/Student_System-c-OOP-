@@ -162,10 +162,32 @@ void displayStudent()
 {
     studentController.showStudents();
 }
-/*void displayCourse()
+void displayCourse()
 {
-    courseController.
-}*/
+    courseController.showCourses();
+}
+void displayTeacher()
+{
+    teacherController.showTeachers();
+}
+void removeStu()
+{
+    displayStudent();
+    cout<<"Remove by ID: ";cin>>id;
+    studentController.removeStudent(id);
+}
+void removeCou()
+{
+    displayCourse();
+    cout<<"Remove by ID: ";cin>>id;
+    courseController.removeCourse(id);
+}
+void removeTea()
+{
+    displayTeacher();
+    cout<<"Remove by ID: ";cin>>id;
+    teacherController.removeTeacher(id);
+}
 void switchStudent()
 {
     switch(process)
@@ -174,7 +196,7 @@ void switchStudent()
             addStudent();
             break;
         case 2:
-            cout<<"Remove Student"<<endl;
+            removeStu();
             break;
         case 3:
            editStudent();
@@ -199,13 +221,13 @@ void switchCourse()
             addCourse();
             break;
         case 2:
-            cout<<"Remove Course"<<endl;
+            removeCou();
             break;
         case 3:
             editCourse();
             break;
         case 4:
-            cout<<"Show Course"<<endl;
+            displayCourse();
             break;
         case 5:
             showCourseById();
@@ -224,13 +246,13 @@ void switchTeacher()
             addTeacher();
             break;
         case 2:
-            cout<<"Remove Teacher"<<endl;
+            removeTea();
             break;
         case 3:
             editTeacher();
             break;
         case 4:
-            cout<<"Show Teacher"<<endl;
+            displayTeacher();
             break;
         case 5:
             showTeacherById();
